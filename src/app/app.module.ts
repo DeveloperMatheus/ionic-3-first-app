@@ -13,6 +13,10 @@ import { IntroPageModule } from '../pages/intro/intro.module';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+//Parece que preciso desse import da linha 17 também
+import { HttpClientModule } from '@angular/common/http';
+import { FilmeProvider } from '../providers/filme/filme';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -25,7 +29,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     FeedPageModule,
-    IntroPageModule
+    IntroPageModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,7 +43,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FilmeProvider
   ]
 })
 export class AppModule {}

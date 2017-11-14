@@ -31,7 +31,7 @@ export class FeedPage {
   }
   // <any> vira um objeto javascript pra eu fazer qualquer coisa
   // public listaFilmes = new Array<any>();
-  public listaFilmes = new Array<>();
+  public listaFilmes = new Array<any>();
 
   /* restringindo o tipo de uma variável */
   public nomeUsuario:string = "Matheus Menezes (código)";
@@ -54,7 +54,7 @@ export class FeedPage {
     this.filmeProvider.getUltimosFilmes().subscribe(
       data=>{
         console.log(data);
-        this.listaFilmes = data.results;
+        this.listaFilmes = data['results'];
 
         //Meu JSON não mostra como um Object e não tem header e nem body
         //const response = (data as any);

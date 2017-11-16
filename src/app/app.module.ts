@@ -15,6 +15,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 //Parece que preciso desse import da linha 17 também
 import { HttpClientModule } from '@angular/common/http';
+import { ConfigProvider } from '../providers/config/config';
 //import { FilmeProvider } from '../providers/filme/filme';
 
 @NgModule({
@@ -44,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ConfigProvider,
     //FilmeProvider
   ]
 })

@@ -21,7 +21,7 @@ export class FilmeProvider {
   getUltimosFilmes() {
     // /movie/popular é um diretório do site da documentação do api.
     //Coloque sua key no #.
-    return this.http.get(this.caminhoApiBase + '/movie/popular?api_key=#');
+    return this.http.get(this.caminhoApiBase + '/movie/popular?api_key=43c484a6d1f19b99959336bf0dd178d9');
   }
 
 }

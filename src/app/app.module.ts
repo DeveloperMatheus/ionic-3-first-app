@@ -17,6 +17,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfigProvider } from '../providers/config/config';
 import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
+import { SobrePageModule } from '../pages/sobre/sobre.module';
+import { PerfilPageModule } from '../pages/perfil/perfil.module';
 //import { FilmeProvider } from '../providers/filme/filme';
 
 @NgModule({
@@ -33,7 +35,9 @@ import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.mo
     FeedPageModule,
     IntroPageModule,
     HttpClientModule,
-    ConfiguracoesPageModule
+    ConfiguracoesPageModule,
+    SobrePageModule,
+    PerfilPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

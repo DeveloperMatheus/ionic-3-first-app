@@ -16,7 +16,7 @@ export class ConfigProvider {
   }
 
   // método criado por mim: recupera dados do local store
-  getConfigData(): any {
+  getConfigData():any {
     return localStorage.getItem(configChaveNome);
   }
   // método criado por mim: grava dados no local store

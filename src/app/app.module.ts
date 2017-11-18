@@ -16,6 +16,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 //Parece que preciso desse import da linha 17 também
 import { HttpClientModule } from '@angular/common/http';
 import { ConfigProvider } from '../providers/config/config';
+import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
 //import { FilmeProvider } from '../providers/filme/filme';
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ConfigProvider } from '../providers/config/config';
     IonicModule.forRoot(MyApp),
     FeedPageModule,
     IntroPageModule,
-    HttpClientModule
+    HttpClientModule,
+    ConfiguracoesPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

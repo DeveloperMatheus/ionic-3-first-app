@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PerfilPage } from '../perfil/perfil';
 
 /**
  * Generated class for the ConfiguracoesPage page.
@@ -15,6 +16,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ConfiguracoesPage {
 
+  // Vai carregar a página de perfil quando clicar no menuTabs ao invés de configurações.
+  // Configurações vai estar dentro de um side menu.
+  rootPage = PerfilPage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

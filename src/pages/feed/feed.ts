@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // // importando o provider FilmeProvider
 import { FilmeProvider } from '../../providers/filme/filme';
+import { LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the FeedPage page.
@@ -34,14 +35,27 @@ export class FeedPage {
   public listaFilmes = new Array<any>();
 
   /* restringindo o tipo de uma variável */
-  public nomeUsuario:string = "Matheus Menezes (código)";
+  public feedTitulo:string = "Filmes populares";
+  public loader;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     // ato de injetar o FilmeProvider
-    private filmeProvider: FilmeProvider
+    private filmeProvider: FilmeProvider,
+    public loadingCtrl: LoadingController
     ) {
+  }
+
+  abreLoader() {
+    this.loader = this.loadingCtrl.create({
+      content: "Carregando filmes..."
+    });
+    this.loader.present();
+  }
+
+  fechaLoader() {
+    this.loader.dismiss();
   }
 
   /* função void sem retorno */
@@ -49,20 +63,23 @@ export class FeedPage {
     alert(num1 + num2);
   }
 
-  ionViewDidLoad() {
+    //ionViewDidLoad() {
+    /* Vai virar ionViewDidEnter() pra mostrar meu loader sempre que
+    eu entrar na página de feed. o DidLoad é quando a página é carregada. Ou seja,
+    apenas uma única vez. */
+    ionViewDidEnter() {
+      // Chamando minha função do loader.
+      this.abreLoader();
     // utilizando a injeção com o método getUltimosFilmes() que fiz no filme.ts
-    this.filmeProvider.getUltimosFilmes().subscribe(
-      data=>{
+      this.filmeProvider.getUltimosFilmes().subscribe(
+        data=>{
         console.log(data);
         this.listaFilmes = data['results'];
-
-        //Meu JSON não mostra como um Object e não tem header e nem body
-        //const response = (data as any);
-        //const objeto_retorno = JSON.parse(response._body);
-        //this.listaFilmes = objeto_retorno.results;
-        //console.log(objeto_retorno);
+        // Quando terminar de carregar o loader precisa ser fechado!
+        this.fechaLoader();
       }, error => {
         console.log(error);
+        this.fechaLoader();
       }
   )
   }

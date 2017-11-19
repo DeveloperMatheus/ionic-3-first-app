@@ -14,6 +14,10 @@
 
 
 <ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
     <h1>{{ feedTitulo }}</h1>
     <!-- Diretiva estrutural do angular pra percorrer e consumir
     o JSON da minha API externa-->

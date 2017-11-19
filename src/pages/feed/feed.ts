@@ -37,6 +37,8 @@ export class FeedPage {
   /* restringindo o tipo de uma variável */
   public feedTitulo:string = "Filmes populares";
   public loader;
+  public refresher;
+  public isAtualiza:boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -63,11 +65,21 @@ export class FeedPage {
     alert(num1 + num2);
   }
 
+  doRefresh(refresher) {
+    this.refresher = refresher;
+    this.isAtualiza = true;
+    this.carregaFilmes();
+  }
+
     //ionViewDidLoad() {
     /* Vai virar ionViewDidEnter() pra mostrar meu loader sempre que
     eu entrar na página de feed. o DidLoad é quando a página é carregada. Ou seja,
     apenas uma única vez. */
     ionViewDidEnter() {
+      this.carregaFilmes();
+    }
+
+    carregaFilmes() {
       // Chamando minha função do loader.
       this.abreLoader();
     // utilizando a injeção com o método getUltimosFilmes() que fiz no filme.ts
@@ -77,11 +89,18 @@ export class FeedPage {
         this.listaFilmes = data['results'];
         // Quando terminar de carregar o loader precisa ser fechado!
         this.fechaLoader();
+        if(this.isAtualiza) {
+          this.refresher.complete();
+          this.isAtualiza = false;
+        }
       }, error => {
         console.log(error);
         this.fechaLoader();
+        if(this.isAtualiza) {
+          this.refresher.complete();
+          this.isAtualiza = false;
+        }
       }
-  )
+    )
   }
-
 }

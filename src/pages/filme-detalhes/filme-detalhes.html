@@ -21,24 +21,9 @@
       </ion-item>
 
       <img [src]="['https://image.tmdb.org/t/p/w500'] + filme.backdrop_path">
-
+      
       <ion-card-content>
           <p>{{ filme.overview }}</p>
       </ion-card-content>
-          <ion-col>
-            <button ion-button icon-left clear small>
-              <ion-icon name="thumbs-up"></ion-icon>
-              <div>{{ objeto_feed.qntdLikes }}</div>
-            </button>
-          </ion-col>
-          <ion-col>
-              <button ion-button icon-left clear small>
-                  <ion-icon name="text"></ion-icon>
-                  <div>{{ objeto_feed.qntdComentarios }}</div>
-              </button>
-          </ion-col>
-          <ion-col center text-center>
-              <ion-note>{{ objeto_feed.tempoComentario }}</ion-note>
-          </ion-col>
   </ion-card>
 </ion-content>

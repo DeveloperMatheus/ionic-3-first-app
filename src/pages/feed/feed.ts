@@ -61,11 +61,6 @@ export class FeedPage {
     this.loader.dismiss();
   }
 
-  /* função void sem retorno */
-  public somaDoisNumeros(num1:number, num2:number):void {
-    alert(num1 + num2);
-  }
-
   doRefresh(refresher) {
     this.refresher = refresher;
     this.isAtualiza = true;
@@ -80,8 +75,9 @@ export class FeedPage {
       this.carregaFilmes();
     }
 
-    abrirDetalhes() {
-      this.navCtrl.push(FilmeDetalhesPage);
+    abrirDetalhes(filme) {
+      console.log(filme);
+      this.navCtrl.push(FilmeDetalhesPage, { id: filme.id });
     }
 
     carregaFilmes() {

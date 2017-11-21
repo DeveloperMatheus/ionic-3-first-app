@@ -15,12 +15,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FilmeDetalhesPage {
   public filme;
+  public filmeId;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FilmeDetalhesPage');
+  ionViewDidEnter() {
+    this.filmeId = this.navParams.get("id");
+    console.log("Filme id recebido:", this.filmeId);
   }
 
 }

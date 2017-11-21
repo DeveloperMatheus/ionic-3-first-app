@@ -14,6 +14,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'filme-detalhes.html',
 })
 export class FilmeDetalhesPage {
+  public filme;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // // importando o provider FilmeProvider
 import { FilmeProvider } from '../../providers/filme/filme';
 import { LoadingController } from 'ionic-angular';
+import { FilmeDetalhesPage } from '../filme-detalhes/filme-detalhes';
 
 /**
  * Generated class for the FeedPage page.
@@ -77,6 +78,10 @@ export class FeedPage {
     apenas uma única vez. */
     ionViewDidEnter() {
       this.carregaFilmes();
+    }
+
+    abrirDetalhes() {
+      this.navCtrl.push(FilmeDetalhesPage);
     }
 
     carregaFilmes() {

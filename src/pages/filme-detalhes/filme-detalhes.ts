@@ -15,6 +15,7 @@ import { FilmeProvider } from '../../providers/filme/filme';
   templateUrl: 'filme-detalhes.html',
   providers: [FilmeProvider]
 })
+
 export class FilmeDetalhesPage {
   public filme;
   public filmeId;
@@ -26,12 +27,15 @@ export class FilmeDetalhesPage {
 
   ionViewDidEnter() {
     this.filmeId = this.navParams.get("id");
-    this.filmeProvider.getFilmeDetalhes(this.filmeId).subscribe(data=>{
-      let retorno = data['id'];
-      this.filme = retorno;
-    }, error => {
-      console.log(error);
-    })
+    this.filmeProvider.getFilmeDetalhes(this.filmeId)
+      .subscribe(data => {
+        console.log(data);
+        // let retorno = data['id'];
+        this.filme = data;
+
+      }, error => {
+        console.log(error);
+      })
   }
 
 }

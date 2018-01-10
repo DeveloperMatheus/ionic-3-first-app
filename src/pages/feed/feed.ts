@@ -34,12 +34,14 @@ export class FeedPage {
   // <any> vira um objeto javascript pra eu fazer qualquer coisa
   // public listaFilmes = new Array<any>();
   public listaFilmes = new Array<any>();
+  public page = 1;
 
   /* restringindo o tipo de uma variável */
   public feedTitulo:string = "Filmes populares";
   public loader;
   public refresher;
   public isAtualiza:boolean = false;
+  public infiniteScroll;
 
   constructor(
     public navCtrl: NavController,
@@ -80,16 +82,24 @@ export class FeedPage {
       this.navCtrl.push(FilmeDetalhesPage, { id: filme.id });
     }
 
-    carregaFilmes() {
+    carregaFilmes(newpage: boolean = false) {
       // Chamando minha função do loader.
       this.abreLoader();
     // utilizando a injeção com o método getUltimosFilmes() que fiz no filme.ts
-      this.filmeProvider.getUltimosFilmes().subscribe(
+      this.filmeProvider.getUltimosFilmes(this.page).subscribe(
         data=>{
         console.log(data);
         this.listaFilmes = data['results'];
         // Quando terminar de carregar o loader precisa ser fechado!
         this.fechaLoader();
+
+        if (newpage) {
+          this.listaFilmes.concat(data['results']);
+          this.infiniteScroll.complete();
+        } else {
+          this.listaFilmes = data['results'];
+        }
+
         if(this.isAtualiza) {
           this.refresher.complete();
           this.isAtualiza = false;
@@ -104,4 +114,14 @@ export class FeedPage {
       }
     )
   }
-}
+
+  doInfinite(infiniteScroll) {
+    console.log('Begin async operation');
+    this.page++;
+    this.infiniteScroll = infiniteScroll;
+    this.carregaFilmes(true);
+    infiniteScroll.complete();
+    this.infiniteScroll.enable(false);
+  }
+
+ }

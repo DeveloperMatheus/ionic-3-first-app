@@ -15,7 +15,7 @@
     <h1>{{ feedTitulo }}</h1>
     <!-- Diretiva estrutural do angular pra percorrer e consumir
     o JSON da minha API externa-->
-    <ion-card *ngFor="let filme of listaFilmes">
+    <ion-card class="filme-card" *ngFor="let filme of listaFilmes">
         <ion-item>
             <ion-avatar item-start>
                 <img src="assets/imgs/marty-avatar.png">
@@ -52,4 +52,8 @@
         </ion-row>
         <button ion-button block (click)="abrirDetalhes(filme)">Detalhes</button>
     </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>

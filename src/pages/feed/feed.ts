@@ -121,7 +121,6 @@ export class FeedPage {
     this.infiniteScroll = infiniteScroll;
     this.carregaFilmes(true);
     infiniteScroll.complete();
-    this.infiniteScroll.enable(false);
   }
 
  }
